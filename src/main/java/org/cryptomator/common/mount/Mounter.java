@@ -163,7 +163,10 @@ public class Mounter {
 	}
 
 	public static boolean isProblematicFuseService(MountService service) {
-		return problematicFuseMountServices.contains(service.getClass().getName());
+		if(service == null)
+			return false;
+		else
+			return problematicFuseMountServices.contains(service.getClass().getName());
 	}
 
 	public record MountHandle(Mount mountObj, boolean supportsUnmountForced, Runnable specialCleanup) {
